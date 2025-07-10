@@ -47,6 +47,7 @@ int main(){
 ```
 使用到的是反引号（1左边的键）
 `print("hello world")`
+
 ## 链接
 [联系我们](https://www.zhihu.com "点击跳转")
 
@@ -67,7 +68,6 @@ difference with inserting link: exclamation point at the beginning (!)
 <img style = "height:50px" src="https://haowallpaper.com/link/common/file/getCroppingImg/15789130517090624">
 
 ## mermaid
-
 ```mermaid
 flowchart LR
     A[AA] --> B[BB]
@@ -78,6 +78,7 @@ flowchart LR
 ## todo list
 - [ ] markdown
 - [x] git
+- [ ] untitle
 - [ ] untitle
 
 notice three space
