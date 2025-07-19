@@ -29,7 +29,7 @@
 - git status 可以查看文件夹下面的改动走到了协作的哪一环,保存了但没暂存,暂存了但是没提交
 - git log 可以查看提交历史,追溯代码的演变,了解谁在什么时候做了修改
 - git push:将提交到本地仓库的内容推送到远程仓库,使团队可以获取文件更新
-  - 第一次推送使用git push -u origin <分支名>,-u用于关联上游分支,origin是默认仓库名;和public branch/发布分支一致
+  - 第一次推送使用git push -u origin <分支名>,-u用于关联上游分支,origin是默认仓库名;和public branch/发布分支是一致的操作
 - git pull:从远程仓库获取团队的最新文件
 - pull和push:pull是从远程仓库将文件下载到本地计算机,push是从本地仓库上传到远程仓库
 - pull和clone:clone只需在第一次加入项目时操作,pull是日常工作常用操作
