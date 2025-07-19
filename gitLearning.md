@@ -34,3 +34,4 @@
 - pull和clone:clone只需在第一次加入项目时操作,pull是日常工作常用操作
 - branch：主代码库分出的独立开发线，在分支允许并行开发新功能，最后合并回主代码库，merge request(gitlab)和pull request(github)是同一操作
 -  完整流程:新建文件夹/项目根目录/最大的文件夹,在vscode打开以后初始化,新建文件以后CTRLs,显示U,在源代码管理按加号添加到暂存区,确定后点提交,输入提交说明,保存到本地仓库
+-  git branch --set-upstream-to=github/main main用于和远程仓库建立关联 github/main是远程分支,格式是仓库名/分支名,结尾的main是本地分支名称
