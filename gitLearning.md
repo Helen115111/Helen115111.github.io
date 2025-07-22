@@ -35,3 +35,10 @@
 - branch：主代码库分出的独立开发线，在分支允许并行开发新功能，最后合并回主代码库，merge request(gitlab)和pull request(github)是同一操作
 -  完整流程:新建文件夹/项目根目录/最大的文件夹,在vscode打开以后初始化,新建文件以后CTRLs,显示U,在源代码管理按加号添加到暂存区,确定后点提交,输入提交说明,保存到本地仓库
 -  git branch --set-upstream-to=github/main main用于和远程仓库建立关联 github/main是远程分支,格式是仓库名/分支名,结尾的main是本地分支名称
+-  我已有一个本地仓库,新建一个远程仓库,想关联起来,通过git remote -v检查,只要打算用的远程名字没有被占用即可
+-  关联仓库之后,最好将本地分支和远程分支也进行关联,命令是:,关联后就可以通过git push推送,如果不关联,每次推送都要写git push origin 本地分支:远程分支
+-  切换分支?
+  本地分支关联另一个远程分支:git push -u origin branchname
+  切换本地分支:git checkout branchName,每条分支的关联远程情况互不干扰各自运行
+-  push之前
+-    
