@@ -41,4 +41,4 @@
   本地分支关联另一个远程分支:git push -u origin branchname
   切换本地分支:git checkout branchName,每条分支的关联远程情况互不干扰各自运行
 -  push之前通常先pull,这二者的操作对象都是分支
--    
+-  终端的操作对象是文件夹而非文件
