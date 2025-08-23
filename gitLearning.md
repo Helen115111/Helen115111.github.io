@@ -26,6 +26,11 @@
 - git clone命令可以将一个项目完整复制到自己的电脑上进行工作,命令格式是==git clone <远程仓库地址> [本地文件夹名]==
 - **git commit -m "message"** 是一个标准的提交文件更新到本地仓库的命令,-m表示massage提交信息,"message"是具体内容
 - git status 可以查看文件夹下面的改动走到了协作的哪一环,保存了但没暂存,暂存了但是没提交
+- git remote -v 可以检查是否和远程仓库关联了 
+- git remote -vv可以检查是否和远程分支关联了
+- 本地分支关联另一个远程分支:git push -u origin branchname
+  "发布branch"可以将本地分支推送到远程仓库
+  切换本地分支:git checkout branchName,每条分支的关联远程情况互不干扰各自运行
 - git log 可以查看提交历史,追溯代码的演变,了解谁在什么时候做了修改
 - git push:将提交到本地仓库的内容推送到远程仓库,使团队可以获取文件更新
   - 第一次推送使用git push -u origin <分支名>,-u用于关联上游分支,origin是默认仓库名;和public branch/发布分支是一致的操作
@@ -33,12 +38,26 @@
 - pull和push:pull是从远程仓库将文件下载到本地计算机,push是从本地仓库上传到远程仓库
 - pull和clone:clone只需在第一次加入项目时操作,pull是日常工作常用操作
 - branch：主代码库分出的独立开发线，在分支允许并行开发新功能，最后合并回主代码库，merge request(gitlab)和pull request(github)是同一操作
--  完整流程:新建文件夹/项目根目录/最大的文件夹,在vscode打开以后初始化,新建文件以后CTRLs,显示U,在源代码管理按加号添加到暂存区,确定后点提交,输入提交说明,保存到本地仓库
--  git branch --set-upstream-to=github/main main用于和远程仓库建立关联 github/main是远程分支,格式是仓库名/分支名,结尾的main是本地分支名称
--  我已有一个本地仓库,新建一个远程仓库,想关联起来,通过git remote -v检查,只要打算用的远程名字没有被占用即可
--  关联仓库之后,最好将本地分支和远程分支也进行关联,命令是:,关联后就可以通过git push推送,如果不关联,每次推送都要写git push origin 本地分支:远程分支
--  切换分支?
-  本地分支关联另一个远程分支:git push -u origin branchname
-  切换本地分支:git checkout branchName,每条分支的关联远程情况互不干扰各自运行
--  push之前通常先pull,这二者的操作对象都是分支
--  终端的操作对象是文件夹而非文件
+- 完整流程:新建文件夹/项目根目录/最大的文件夹,在vscode打开以后初始化,新建文件以后CTRLs,显示U,在源代码管理按加号添加到暂存区,确定后点提交,输入提交说明,保存到本地仓库
+- git branch --set-upstream-to=github/main main用于和远程仓库建立关联 github/main是远程分支,格式是仓库名/分支名,结尾的main是本地分支名称
+- 关联仓库：我已有一个本地仓库,新建一个远程仓库,想关联起来,通过git remote -v检查,输出结果没有打算用的远程名字就是没有被占用；这里占用是对一个本地仓库而言的，仓库a可以用origin当远程的默认名，仓库b还能用origin
+  关联命令：git remote add origin url
+- 关联仓库之后,最好将本地分支和远程分支也进行关联,命令是:git push -u <远程仓库别名> <本地分支名>， <远程仓库别名> 是之前用 git remote add 设定的（比如 origin），<本地分支名> 是当前工作的本地分支（比如 main 或 master）,关联后就可以通过git push推送,如果不关联,每次推送都要写git push origin 本地分支:远程分支
+- push之前通常先pull,这二者的操作对象都是分支
+- 终端的操作对象是文件夹而非文件
+
+- commit是提交到本地仓库 push是提交 到远程仓库
+- 新建ssh密钥
+```
+ssh-keygen -t ed25519 -C yli8i3@163.com 
+# 新建，设置密码
+```
+```
+cat ~/.ssh/id_ed25519.pub
+# 输出密钥，复制到GitHub
+```
+
+```
+ ssh-keygen -p -f $HOME\.ssh\id_ed25519
+# change password
+```
