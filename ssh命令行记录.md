@@ -196,11 +196,20 @@ Mode                 LastWriteTime         Length Name
 
 
 PS D:\md_files> mv ~/.ssh/config.txt ~/.ssh/config
+  - 这个命令的作用是 将 .ssh 目录下名为 config.txt 的文件重命名为 config，原因是在记事本保存文件自带了后缀，无法识别，需要手动删掉，解决方法，去文件夹删和这个命令行都行
+  - mv 是 Linux/macOS（或 Git Bash 等类 Unix 终端）中的 “移动 / 重命名” 命令，既可以移动文件位置，也可以直接重命名文件。
+  - git bash和cmd，powershell都是终端，cmd功能比较基础，powershell更强大，git bash适用于git操作和Unix/Linux操作
+  - ~/.ssh/config.txt 是原文件路径：~ 代表用户主目录，.ssh 是存放 SSH 配置的目录，config.txt 是带 .txt 后缀的原文件名。~/.ssh/config 是目标路径：表示将文件重命名为 config（去掉 .txt 后缀），仍放在在 .ssh 目录下。
+  
+
 PS D:\md_files> cat ~/.ssh/config
+- 读取文件内容，确认是否正确配置ssh规则以及配置文件是否存在
+  
 Host github.com
   Hostname ssh.github.com
   Port 443
   User git
+- 测试是否连接畅通
 PS D:\md_files> ssh -T git@github.com
 The authenticity of host '[ssh.github.com]:443 ([20.205.243.160]:443)' can't be established.
 ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
