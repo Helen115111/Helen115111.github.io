@@ -129,7 +129,7 @@ Mode                 LastWriteTime         Length Name
 -a----         2025/8/22     22:09             97 id_ed25519.pub
 
 
-PS D:\md_files> ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
+==PS D:\md_files>== ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
 Generating public/private ed25519 key pair.
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
@@ -139,61 +139,76 @@ Key has comment 'yli8i3@163.com'
 Enter new passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved with the new passphrase.
-PS D:\md_files> git add
+==PS D:\md_files>== git add
 Nothing specified, nothing added.
 hint: Maybe you wanted to say 'git add .'?
 hint: Disable this message with "git config set advice.addEmptyPathspec false"
-PS D:\md_files> git add .
-PS D:\md_files> git commit -m "关于新建ssh密钥的笔记“
+==PS D:\md_files>== git add .
+==PS D:\md_files>== git commit -m "关于新建ssh密钥的笔记“
 [main c8a2c92] 关于新建ssh密钥的笔记
  3 files changed, 38 insertions(+), 9 deletions(-)
  create mode 100644 1.md
  create mode 100644 tw.md
-PS D:\md_files> git status
+==PS D:\md_files>== git status
 On branch main
 Your branch is ahead of 'github/main' by 1 commit.
   (use "git push" to publish your local commits)
 
 nothing to commit, working tree clean
-PS D:\md_files> git push
+==PS D:\md_files>== git push
 fatal: unable to access 'https://github.com/Helen115111/Helen115111.github.io.git/': SSL certificate problem: unable to get local issuer certificate
-PS D:\md_files> git remote set-url origin git@github.com:Helen115111/Helen115111.github.io.git
-error: No such remote 'origin'
-PS D:\md_files> git remote -v
+==PS D:\md_files> git remote set-url origin git@github.com:Helen115111/Helen115111.github.io.git
+error: No such remote 'origin'==
+==PS D:\md_files> git remote -v==
 github  https://github.com/Helen115111/Helen115111.github.io.git (fetch)
 github  https://github.com/Helen115111/Helen115111.github.io.git (push)
-PS D:\md_files> git remote set-url github git@github.com:Helen115111/Helen115111.github.io.git                                              
-PS D:\md_files> git push
+==PS D:\md_files> git remote set-url github git@github.com:Helen115111/Helen115111.github.io.git==                                              
+==PS D:\md_files> git push==
 ssh: connect to host github.com port 22: Connection refused
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
-PS D:\md_files> ssh -T git@github.com
+==PS D:\md_files> ssh -T git@github.com==
 ssh: connect to host github.com port 22: Connection refused
-PS D:\md_files> ssh -T git@github.com
+==PS D:\md_files> ssh -T git@github.com==
 ssh: connect to host github.com port 22: Connection refused
-PS D:\md_files> git config --global http.sslVerify false
-PS D:\md_files> git push github main
+==PS D:\md_files> git config --global http.sslVerify false==
+==PS D:\md_files> git push github main==
 ssh: connect to host github.com port 22: Connection refused
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
-PS D:\md_files> ssh -T git@github.com
+
+---
+
+==PS D:\md_files>== ssh -T git@github.com
 ssh: connect to host github.com port 22: Connection refused
-PS D:\md_files> ls ~/.ssh
+
+
+**ssh -T git@github.com**：检查 GitHub SSH 配置是否生效” 的标准测试命令，配置新的 SSH 密钥或遇到 git push 失败时可以进行故障排查
+**ssh：**表示在执行ssh操作
+**connect to host github.com**：表示正在进行的操作，即连接到GitHub服务器
+**port 22**：ssh协议默认的端口22
+
+---
+
+==PS D:\md_files>== ls ~/.ssh
 
 
     目录: C:\Users\yli8i\.ssh
 
-
+```
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 -a----         2025/8/24      0:08             66 config.txt
 -a----         2025/8/23     23:36            464 id_ed25519
 -a----         2025/8/22     22:09             97 id_ed25519.pub
+```
+ls是 "list" 的缩写，核心功能是列出指定目录下的文件和文件夹,~/.ssh是文件目录
 
+---
 
 PS D:\md_files> mv ~/.ssh/config.txt ~/.ssh/config
   - 这个命令的作用是 将 .ssh 目录下名为 config.txt 的文件重命名为 config，原因是在记事本保存文件自带了后缀，无法识别，需要手动删掉，解决方法，去文件夹删和这个命令行都行
@@ -201,14 +216,17 @@ PS D:\md_files> mv ~/.ssh/config.txt ~/.ssh/config
   - git bash和cmd，powershell都是终端，cmd功能比较基础，powershell更强大，git bash适用于git操作和Unix/Linux操作
   - ~/.ssh/config.txt 是原文件路径：~ 代表用户主目录，.ssh 是存放 SSH 配置的目录，config.txt 是带 .txt 后缀的原文件名。~/.ssh/config 是目标路径：表示将文件重命名为 config（去掉 .txt 后缀），仍放在在 .ssh 目录下。
   
+---
 
-PS D:\md_files> cat ~/.ssh/config
 - 读取文件内容，确认是否正确配置ssh规则以及配置文件是否存在
-  
+PS D:\md_files> cat ~/.ssh/config
 Host github.com
   Hostname ssh.github.com
   Port 443
   User git
+  
+---
+
 - 测试是否连接畅通
 PS D:\md_files> ssh -T git@github.com
 The authenticity of host '[ssh.github.com]:443 ([20.205.243.160]:443)' can't be established.
