@@ -1,8 +1,11 @@
 
-PS D:\md_files> git remote -v
+==PS D:\md_files>== git remote -v
 github  https://github.com/Helen115111/Helen115111.github.io.git (fetch)
 github  https://github.com/Helen115111/Helen115111.github.io.git (push)
-PS D:\md_files> git branch
+
+---
+
+==PS D:\md_files>== git branch
 * main
 PS D:\md_files> git branch -r
   github/HEAD -> github/main
@@ -12,19 +15,19 @@ branch 'main' set up to track 'github/main'.
 PS D:\md_files>
  *  还原的历史记录 
 
-PS D:\md_files> git remote -v
+==PS D:\md_files>== git remote -v
 github  https://github.com/Helen115111/Helen115111.github.io.git (fetch)
 github  https://github.com/Helen115111/Helen115111.github.io.git (push)
-PS D:\md_files> git pull origin main
+==PS D:\md_files>== git pull origin main
 fatal: 'origin' does not appear to be a git repository
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
-PS D:\md_files> git remote -v
+==PS D:\md_files>== git remote -v
 github  https://github.com/Helen115111/Helen115111.github.io.git (fetch)
 github  https://github.com/Helen115111/Helen115111.github.io.git (push)
-PS D:\md_files> git push -u github main --allow-unrealted-histories
+==PS D:\md_files>== git push -u github main --allow-unrealted-histories
 error: unknown option `allow-unrealted-histories'
 usage: git push [<options>] [<repository> [<refspec>...]]
 
@@ -66,16 +69,16 @@ usage: git push [<options>] [<repository> [<refspec>...]]
     -4, --ipv4            use IPv4 addresses only
     -6, --ipv6            use IPv6 addresses only
 
-PS D:\md_files> git pull --allow-unrelated-histories github main
+==PS D:\md_files>== git pull --allow-unrelated-histories github main
 From https://github.com/Helen115111/Helen115111.github.io
  * branch            main       -> FETCH_HEAD
 fatal: Could not read from '.git/MERGE_MSG': No such file or directory
-PS D:\md_files> git romote -v
+==PS D:\md_files>== git romote -v
 git: 'romote' is not a git command. See 'git --help'.
 
 The most similar command is
         remote
-PS D:\md_files> git remote -v
+==PS D:\md_files>== git remote -v
 github  https://github.com/Helen115111/Helen115111.github.io.git (fetch)
 github  https://github.com/Helen115111/Helen115111.github.io.git (push)
 PS D:\md_files>
@@ -87,8 +90,8 @@ PS D:\md_files>
 PS D:\md_files> 
  *  还原的历史记录 
 
-PS D:\md_files> cd D:\my_vscode\notoriginal
-PS D:\my_vscode\notoriginal> git clone https://github.com/Helen115111/first-contributions.git
+==PS D:\md_files>== cd D:\my_vscode\notoriginal
+==PS D:\my_vscode\notoriginal>== git clone https://github.com/Helen115111/first-contributions.git
 Cloning into 'first-contributions'...
 remote: Enumerating objects: 27453, done.
 remote: Counting objects: 100% (560/560), done.
@@ -99,17 +102,26 @@ Resolving deltas: 100% (17739/17739), done.
 PS D:\my_vscode\notoriginal> 
  *  还原的历史记录 
 
-PS D:\md_files> git add
+==PS D:\md_files>== git add
 Nothing specified, nothing added.
 hint: Maybe you wanted to say 'git add .'?
 hint: Disable this message with "git config set advice.addEmptyPathspec false"
-PS D:\md_files> ssh-keygen -p -f ~/.ssh/id_ed25519
+==PS D:\md_files>== ssh-keygen -p -f ~/.ssh/id_ed25519
+
+----
+
 ~/.ssh/id_ed25519: No such file or directory
-PS D:\md_files> ssh-keygen -p -f ~/.ssh/id_ed25519
+==PS D:\md_files>== ssh-keygen -p -f ~/.ssh/id_ed25519
 ~/.ssh/id_ed25519: No such file or directory
-PS D:\md_files> ssh-keygen -p -f ~/.ssh/id_ed25519
+
+---
+
+==PS D:\md_files>== ssh-keygen -p -f ~/.ssh/id_ed25519
 ~/.ssh/id_ed25519: No such file or directory
-PS D:\md_files> ls -al ~/.ssh
+
+---
+
+==PS D:\md_files>== ls -al ~/.ssh
 Get-ChildItem : 找不到与参数名称“al”匹配的参数。
 所在位置 行:1 字符: 4
 + ls -al ~/.ssh
@@ -117,28 +129,40 @@ Get-ChildItem : 找不到与参数名称“al”匹配的参数。
     + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem]，ParameterBindingException
     + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
 
-PS D:\md_files> Get-ChildItem -Path ~/.ssh -Force
+==PS D:\md_files>== Get-ChildItem -Path ~/.ssh -Force
 
 
     目录: C:\Users\yli8i\.ssh
 
-
+```
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 -a----         2025/8/22     22:09            411 id_ed25519
 -a----         2025/8/22     22:09             97 id_ed25519.pub
+```
 
+---
 
 ==PS D:\md_files>== ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
 Generating public/private ed25519 key pair.
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Saving key "~/.ssh/id_ed25519" failed: No such file or directory
-PS D:\md_files> ssh-keygen -p -f $HOME\.ssh\id_ed25519
+
+**ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519**：生成SSH密钥的命令，*keygen*是key generator的缩写，用于生成ssh密钥对，*-t ed25519*指定密钥类型，ed25519是密钥算法，*-f*代表filename，指定密钥文件的路径和文件名，
+
+生成密钥是不需要文件基础的，而保存需要.ssh目录存在，因此生成的操作正常进行了，saving key/保存失败了
+
+---
+
+==PS D:\md_files>== ssh-keygen -p -f $HOME\.ssh\id_ed25519
 Key has comment 'yli8i3@163.com'
 Enter new passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved with the new passphrase.
+
+---
+
 ==PS D:\md_files>== git add
 Nothing specified, nothing added.
 hint: Maybe you wanted to say 'git add .'?
@@ -174,12 +198,18 @@ ssh: connect to host github.com port 22: Connection refused
 ==PS D:\md_files> ssh -T git@github.com==
 ssh: connect to host github.com port 22: Connection refused
 ==PS D:\md_files> git config --global http.sslVerify false==
-==PS D:\md_files> git push github main==
+
+---
+
+==PS D:\md_files>== git push github main
 ssh: connect to host github.com port 22: Connection refused
 fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
+
+**git push github main**：将本地修改同步到远程服务器+远程仓库别名+要同步的本地分支的名称
+
 
 ---
 
@@ -188,7 +218,7 @@ ssh: connect to host github.com port 22: Connection refused
 
 
 **ssh -T git@github.com**：检查 GitHub SSH 配置是否生效” 的标准测试命令，配置新的 SSH 密钥或遇到 git push 失败时可以进行故障排查
-**ssh：**表示在执行ssh操作
+**ssh**：表示在执行ssh操作
 **connect to host github.com**：表示正在进行的操作，即连接到GitHub服务器
 **port 22**：ssh协议默认的端口22
 
@@ -219,7 +249,7 @@ PS D:\md_files> mv ~/.ssh/config.txt ~/.ssh/config
 ---
 
 - 读取文件内容，确认是否正确配置ssh规则以及配置文件是否存在
-PS D:\md_files> cat ~/.ssh/config
+==PS D:\md_files>== cat ~/.ssh/config
 Host github.com
   Hostname ssh.github.com
   Port 443
