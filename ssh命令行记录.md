@@ -107,22 +107,22 @@ Nothing specified, nothing added.
 hint: Maybe you wanted to say 'git add .'?
 hint: Disable this message with "git config set advice.addEmptyPathspec false"
 ==PS D:\md_files>== ssh-keygen -p -f ~/.ssh/id_ed25519
-
-----
-
-~/.ssh/id_ed25519: No such file or directory
-==PS D:\md_files>== ssh-keygen -p -f ~/.ssh/id_ed25519
 ~/.ssh/id_ed25519: No such file or directory
 
----
-
-==PS D:\md_files>== ssh-keygen -p -f ~/.ssh/id_ed25519
-~/.ssh/id_ed25519: No such file or directory
+#修改密码
 
 ---
 
 ==PS D:\md_files>== ls -al ~/.ssh
 Get-ChildItem : 找不到与参数名称“al”匹配的参数。
+
+**unix风格命令，查看目录下的文件，powershell要用
+Get-ChildItem -Force -Path "$env:USERPROFILE\.ssh"
+或者
+ls -Force ~/.ssh
+或者
+Get-ChildItem -Path ~/.ssh -Force**
+
 所在位置 行:1 字符: 4
 + ls -al ~/.ssh
 +    ~~~
@@ -151,7 +151,8 @@ Saving key "~/.ssh/id_ed25519" failed: No such file or directory
 
 **ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519**：生成SSH密钥的命令，*keygen*是key generator的缩写，用于生成ssh密钥对，*-t ed25519*指定密钥类型，ed25519是密钥算法，*-f*代表filename，指定密钥文件的路径和文件名，
 
-生成密钥是不需要文件基础的，而保存需要.ssh目录存在，因此生成的操作正常进行了，saving key/保存失败了
+运行ssh-keygen，生成可以但是保存会失败，提示无文件或目录。生成密钥是不需要文件基础的，而保存对文件基础有要求，因此生成的操作正常进行了，saving key/保存失败了
+
 
 ---
 
@@ -161,13 +162,13 @@ Enter new passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved with the new passphrase.
 
+小写的p：-p的核心功能是更改密码，通过主参数＋辅助参数可以实现更多功能
+-f：也是主参数，指定文件名和保存路径
+comment：表示注释信息，等于房门钥匙上标记了门牌号
+
 ---
 
-==PS D:\md_files>== git add
-Nothing specified, nothing added.
-hint: Maybe you wanted to say 'git add .'?
-hint: Disable this message with "git config set advice.addEmptyPathspec false"
-==PS D:\md_files>== git add .
+
 ==PS D:\md_files>== git commit -m "关于新建ssh密钥的笔记“
 [main c8a2c92] 关于新建ssh密钥的笔记
  3 files changed, 38 insertions(+), 9 deletions(-)
@@ -181,12 +182,28 @@ Your branch is ahead of 'github/main' by 1 commit.
 nothing to commit, working tree clean
 ==PS D:\md_files>== git push
 fatal: unable to access 'https://github.com/Helen115111/Helen115111.github.io.git/': SSL certificate problem: unable to get local issuer certificate
-==PS D:\md_files> git remote set-url origin git@github.com:Helen115111/Helen115111.github.io.git
-error: No such remote 'origin'==
-==PS D:\md_files> git remote -v==
+==PS D:\md_files>== git remote set-url origin git@github.com:Helen115111/Helen115111.github.io.git
+error: No such remote 'origin'
+
+---
+
+==PS D:\md_files>== git remote -v
 github  https://github.com/Helen115111/Helen115111.github.io.git (fetch)
 github  https://github.com/Helen115111/Helen115111.github.io.git (push)
-==PS D:\md_files> git remote set-url github git@github.com:Helen115111/Helen115111.github.io.git==                                              
+
+git remote -v：显示当前仓库关联的远程仓库，一般双向的关联是能拉取能推送，但有时权限不允许就会出现单向的关联，也就是仅能推送或仅能拉取，因此两个方向上的关联是分开出现的
+
+---
+
+==PS D:\md_files>== git remote set-url github git@github.com:Helen115111/Helen115111.github.io.git       
+**remote**：表示远程仓库的管理
+**set-url**：表示修改网址
+**github**：此处是自定义的仓库别名，并非关键字
+**git@github.com:Helen115111/Helen115111.github.io.git**：ssh地址
+这一段的作用是修改了远程仓库的url，替换为ssh地址
+
+---
+
 ==PS D:\md_files> git push==
 ssh: connect to host github.com port 22: Connection refused
 fatal: Could not read from remote repository.
@@ -224,6 +241,24 @@ ssh: connect to host github.com port 22: Connection refused
 
 ---
 
+PS D:\md_files> ls $HOME\.ssh -Force
+
+
+    目录: C:\Users\yli8i\.ssh
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2025/8/24      0:08             66 config
+-a----         2025/8/23     23:36            464 id_ed25519
+-a----         2025/8/22     22:09             97 id_ed25519.pub
+-a----         2025/8/24      0:24            861 known_hosts
+-a----         2025/8/24      0:23            103 known_hosts.old
+
+ls $HOME\.ssh -Force 查看文件的正确写法
+一些错误写法： ls -al ~/.ssh/
+ ls -la ~/.ssh
+
 ==PS D:\md_files>== ls ~/.ssh
 
 
@@ -243,7 +278,7 @@ ls是 "list" 的缩写，核心功能是列出指定目录下的文件和文件�
 PS D:\md_files> mv ~/.ssh/config.txt ~/.ssh/config
   - 这个命令的作用是 将 .ssh 目录下名为 config.txt 的文件重命名为 config，原因是在记事本保存文件自带了后缀，无法识别，需要手动删掉，解决方法，去文件夹删和这个命令行都行
   - mv 是 Linux/macOS（或 Git Bash 等类 Unix 终端）中的 “移动 / 重命名” 命令，既可以移动文件位置，也可以直接重命名文件。
-  - git bash和cmd，powershell都是终端，cmd功能比较基础，powershell更强大，git bash适用于git操作和Unix/Linux操作
+  - git bash和cmd，powershell都是终端，cmd功能比较基础，powershell更强大，git bash适用于Unix/Linux操作
   - ~/.ssh/config.txt 是原文件路径：~ 代表用户主目录，.ssh 是存放 SSH 配置的目录，config.txt 是带 .txt 后缀的原文件名。~/.ssh/config 是目标路径：表示将文件重命名为 config（去掉 .txt 后缀），仍放在在 .ssh 目录下。
   
 ---
@@ -267,3 +302,8 @@ Warning: Permanently added '[ssh.github.com]:443' (ED25519) to the list of known
 Enter passphrase for key 'C:\Users\yli8i/.ssh/id_ed25519': 
 Hi Helen115111! You've successfully authenticated, but GitHub does not provide shell access.
 PS D:\md_files> 
+
+切换ssh跳过的密码是GitHub的账号密码，如果用ssh每次push都还要输密码，那是我们自己给密钥设的密码，想要省略这个密码要设置代理
+
+cat ~/.ssh/id_ed25519.pub
+查看公钥
