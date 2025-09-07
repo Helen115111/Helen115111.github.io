@@ -1,4 +1,8 @@
-### 问题：如何确保拥有ssh密钥且配置正常（以powershell为例，一定要先确认使用的是什么命令行工具）
+### SSH密钥配置与故障排查指南（Windows/PowerShell 环境）
+- 文档版本：1.1
+- 最后更新：2025-09-07
+- 作者：杨璐（yli8i3@163.com）
+- 适用受众/前置知识：目标读者: 初学者，需了解基础git命令行操作
 
 ```mermaid
 flowchart TD
@@ -24,7 +28,7 @@ Get-ChildItem -Path ~/.ssh -Force**
 
 #### 2.如何新建ssh密钥-以powershell为例
 ssh-keygen -t ed25519 -C "注释信息"
-在返回提示中输入保存地址,地址需要和命令行工具匹配,powershell中要使用**C:\Users\name\.ssh\id_ed25519**,/home/name/...是类unix风格命令会报错;设置的目录可以包含不存在的文件夹,但是只能生成一级目录,如果目录包含两级不存在的文件夹也会报错；
+在返回提示中输入**保存地址**,地址的写法需要和命令行工具匹配,powershell中要使用**C:\Users\name\.ssh\id_ed25519**,/home/name/...是类unix风格命令会报错;设置的目录可以包含不存在的文件夹,但是只能生成一级目录,如果目录包含两级不存在的文件夹也会报错；
 powershell和类unix工具使用的命令行存在差异，类unix风格的命令行语句和语法在powershell不能正常运行。
 运行ssh-keygen，生成可以但是保存会失败，提示无文件或目录。生成密钥是不需要文件基础的，而保存对文件基础有要求，因此生成的操作正常进行了，saving key/保存失败了
 
@@ -57,8 +61,7 @@ Host github.com
   User git
 + 保存文件，关闭，注意这里记事本会自动添加txt后缀，可以通过命令行删，mv ~/.ssh/config.txt ~/.ssh/config，也可以去文件夹手动删
 这个命令的作用是 将 .ssh 目录下名为 config.txt 的文件重命名为 config，原因是在记事本保存文件自带了后缀，无法识别，需要手动删掉，解决方法，去文件夹删和这个命令行都行
-通过cat ~/.ssh/config
-Host github.com可以确认配置文件是否正确
+通过cat ~/.ssh/config可以确认配置文件是否正确
 
 ```mermaid
 flowchart TD
@@ -75,7 +78,7 @@ Host github.com验证配置文件]
 J --> A
 ```
 
-#### 4.题外话
+#### 4.其他
 换密码
 ssh-keygen -p -f <密钥地址$HOME\.ssh\id_ed25519>
 
