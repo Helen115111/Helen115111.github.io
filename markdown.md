@@ -1,7 +1,6 @@
 # markdown learning
 1 **online courses**
 > bilibili
-> 
 
 2 **practical operation**
 
@@ -13,16 +12,19 @@
 two or more than two space followed by enter
 the space of a whole line
 ## 分割线
-三个及以上的星号
+三个及以上，前后回车防止功能混乱
 ***
+---
+
 ## 有序列表
 1. a
-2. b
-3. c
+1. b
+1. c
 ## 无序列表
 - e
-- d
-- f
++ d
+* f
+* 
 ## 表格＋字体
 | 表头 | 表头 |
 |:---:|:---:| 
