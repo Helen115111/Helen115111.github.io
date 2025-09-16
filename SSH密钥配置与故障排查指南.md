@@ -23,7 +23,7 @@ flowchart TD
   
 #### 1. 检查现有 SSH 密钥
 1.1 检查本地密钥
-在终端中执行以下命令，查看本地/.ssh文件下是否已存在密钥文件
+在终端中执行以下命令，查看本地/.ssh目录下是否已存在密钥文件
 ```
 #适用于powershell
 Get-ChildItem -Force -Path "$env:USERPROFILE\.ssh"
@@ -38,7 +38,7 @@ ls -al ~/.ssh
 输出说明：以常用的Ed25519算法为例，如果输出中包含类似id_ed25519（私钥）或id_ed25519.pub（公钥）的文件，说明已存在密钥。如果目录不存在或者为空，则需要新建密钥。
 
 1.2 检查GitHub服务器的ssh公钥
-首先访问Github SSH Keys设置界页面；
+首先访问Github SSH Keys设置页面；
 在SSH keys列表中，检查是否存在与本地公钥匹配的条目。
 
 #### 2.如何新建ssh密钥-以powershell为例
@@ -51,7 +51,7 @@ ls -al ~/.ssh
 3.根据提示操作：
 - **"Enter file in which to save the key"**:输入保存地址，按enter选择默认地址（`$HOME\.ssh\id_ed25519`)
 - **"Enter passphrase"**：为密钥设置密码，可选，按enter可以跳过
-- 注意：如果需要自定义地址，地址的写法需要和命令行工具匹配，powershell中要使用绝对路径（`C:\Users\name\.ssh\id_ed25519`)；路径中最多只能包含一级不存在的目录。
+- 注意：如果需要自定义地址，地址的写法需要和命令行工具匹配，powershell中要使用绝对路径（`C:\Users\name\.ssh\id_ed25519`)；路径中最多只能包含一级尚未创建的目录。
 
 #### 3.将SSH公钥添加到GitHub
 1.在powershell中运行`cat ~/.ssh/id_ed25519.pub`，复制输出的公钥内容（`ssh-ed25519...`）
