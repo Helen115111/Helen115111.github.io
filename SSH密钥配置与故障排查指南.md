@@ -1,6 +1,6 @@
 ### SSH密钥配置与故障排查指南（Windows/PowerShell 环境）
-- 文档版本：2.0
-- 最后更新：2025-09-10
+- 文档版本：2.1
+- 最后更新：2025-09-17
 - 作者：杨璐（yli8i3@163.com）
 
 #### 目标读者:
@@ -23,6 +23,7 @@ flowchart TD
   
 #### 1. 检查现有 SSH 密钥
 1.1 检查本地密钥
+
 在终端中执行以下命令，查看本地/.ssh目录下是否已存在密钥文件
 ```
 #适用于powershell
@@ -35,6 +36,7 @@ Get-ChildItem -Path ~/.ssh -Force**
 ls -al ~/.ssh
 ```
 功能说明：查看目录下的文件。
+
 输出说明：以常用的Ed25519算法为例，如果输出中包含类似id_ed25519（私钥）或id_ed25519.pub（公钥）的文件，说明已存在密钥。如果目录不存在或者为空，则需要新建密钥。
 
 1.2 检查GitHub服务器的ssh公钥
@@ -49,6 +51,7 @@ ls -al ~/.ssh
 2.运行`ssh-keygen -t ed25519 -C "注释信息"`，将注释信息替换为您的邮箱地址。
 
 3.根据提示操作：
+
 - **"Enter file in which to save the key"**:输入保存地址，按enter选择默认地址（`$HOME\.ssh\id_ed25519`)
 - **"Enter passphrase"**：为密钥设置密码，可选，按enter可以跳过
 - 注意：如果需要自定义地址，地址的写法需要和命令行工具匹配，powershell中要使用绝对路径（`C:\Users\name\.ssh\id_ed25519`)；路径中最多只能包含一级尚未创建的目录。
@@ -71,10 +74,12 @@ ls -al ~/.ssh
 - 运行cd ~/.ssh进入目标目录
 - 在资源管理器新建文件，输入文件名`config`
 - 打开文件输入以下内容：
+```
 Host github.com
   Hostname ssh.github.com
   Port 443
   User git
+```
 - 保存文件，关闭，
 - 注意如果使用记事本添加配置文件，保存时记事本会自动添加txt后缀，导致无法识别，需要手动删除后缀
 - 通过cat ~/.ssh/config可以确认配置文件是否正确
