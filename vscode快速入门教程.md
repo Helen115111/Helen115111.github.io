@@ -27,7 +27,7 @@ VS Code（全称Visual Studio Code）是一款微软开发的代码编辑器，�
 ![选择版本](images\Download-system.png)
 对于个人使用，建议直接点击最大的`Windows 10,11`
 
-- 打开下载好的安装包，勾选“同意协议”
+- 下载完成之后运行安装包，勾选“同意协议”
 ![同意协议]()
 
 - 弹出选择安装位置的对话框：
@@ -50,3 +50,75 @@ VS Code（全称Visual Studio Code）是一款微软开发的代码编辑器，�
 - 等待安装完成即可，点击`完成`，vscode开始运行
   
 ### 2.配置
+
+vscode开始运行之后，你首先看到的是欢迎页。不需要试图立刻看懂这个界面，依次进行以下操作即可：
+
+(1)将语言切换成中文，立刻降低上手难度(下载中文扩展)
+
+点击屏幕最左侧的`扩展`，或者按`Ctrl+Shift+X`
+![]()
+在顶部搜索框输入`Chinese`
+![]()
+在搜索结果中找到由 Microsoft 发布的**Chinese (Simplified) Language Pack for Visual Studio Code**
+![]()
+点击`install`
+![]()
+弹出小提示框，按照提示重启软件
+
+重新打开之后，页面就全部为中文了
+
+(2)安装`Python扩展`，让vscode“看得懂”python代码
+
+下载Python扩展的方式与下载中文扩展一致，依然按照(1)的提示操作，在搜索框输入`Python`
+![]()
+
+在搜索结果中找到Microsoft发布的Python扩展，点击`安装`
+![]()
+
+安装完成之后，vscode就具有了运行、调试、理解Python代码的能力
+
+(3)安装`Python解释器`，真正可以执行代码的Python程序
+进入[Python官网](https://www.python.org/downloads/)
+
+点击黄色的`Download Python 3.13.7`按钮
+
+下载完成之后运行安装包
+
+安装时勾选`Add python.exe to PATH`，然后点击`Install Now`
+
+验证安装是否成功：
+
+在开始菜单搜索`CMD`并打开，在窗口输入`python --version`，然后回车
+
+如果安装成功，会返回Python版本号信息
+![]()
+
+未返回版本号信息可以返回`（3）安装Pyhton解释器`按照教程重新安装一遍
+
+(4)选择Python解释器
+
+在任何地方新建一个文件夹，例如 `C:\Users\[你的用户名]\Desktop\my_python_project`。用 VS Code 打开这个文件夹（打开VS Code，点击左上角`文件` -> `打开文件夹`）。
+
+在VS Code左侧的资源管理器新建一个文件，命名为hello.py。
+![]()
+
+双击hello.py文件，在中央的工作区输入一行代码：`print("Hello, World!") `并保存。
+![]()
+
+点击 VS Code 右下角可能显示“选择 Python 解释器”的地方，或者按 Ctrl+Shift+P 打开命令面板，输入 Python: Select Interpreter 并选择它。
+![]()
+
+从弹出的列表中，选择你刚安装的 Python 版本（通常带有 Recommended 标签）。
+![]()
+
+至此，您已成功将该项目与您选择的Python解释器关联，点击运行时VS Code就会使用此解释器来运行代码。
+
+### 3.页面介绍
+活动栏：页面左侧的图标，用于切换不同的功能面板
+侧边栏：用于显示当前打开的面板，如资源管理器、扩展等
+编辑器：中间区域，用于编写代码
+面板：底部区域，用于显示终端、调试信息和问题等
+状态栏：最底部条状区域，显示当前项目、git分支Python解释器等信息
+![]()
+
+### 4.核心功能
