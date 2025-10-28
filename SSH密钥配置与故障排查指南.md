@@ -88,7 +88,7 @@ Host github.com
 flowchart TD
 A[运行测试命令] --> B[Hi!username...]
 B --> D[pass]
-A --> C[port 22: Connection refused
+A --> C[: Connection refused
 ]
 C --> E[运行 cd ~/.ssh<br>进入目标目录]
 E --> G[添加配置内容]
